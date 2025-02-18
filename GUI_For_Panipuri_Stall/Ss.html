@@ -1,0 +1,53 @@
+import pandas as pd
+
+# Sample DataFrame
+df = pd.DataFrame({
+    "Name": ["Alice", "Bob", "Charlie"],
+    "Age": [25, 30, 35]
+})
+
+# Convert to HTML
+html = df.to_html(classes="styled-table")
+
+# Full HTML with CSS
+full_html = f"""
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {{
+      background-color: black;
+      color: white;
+      font-family: Arial, sans-serif;
+    }}
+    table {{
+      border-collapse: collapse;
+      width: 50%;
+      margin: 20px auto;
+    }}
+    th, td {{
+      border: 1px solid white;
+      padding: 8px;
+      text-align: center;
+    }}
+    tr {{
+      color: white; /* White text for rows */
+    }}
+    th {{
+      background-color: grey;
+      color: white;
+    }}
+  </style>
+</head>
+<body>
+
+{html}
+
+</body>
+</html>
+"""
+
+# Save to file or render in notebook
+with open("styled_table.html", "w") as file:
+    file.write(full_html)
+    
